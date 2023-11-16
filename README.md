@@ -51,9 +51,14 @@ Rails流程:
 (練習)更改首頁:
 
 -routes.rb添加
+
 -*root "wlecome#index"
+
 -$rails g controller welcome
+
 -*welcome controller裡增加action(def index)
+
 -*View/welcome/index.html.erb
+
 -$rails s
 
