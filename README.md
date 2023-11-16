@@ -48,17 +48,11 @@ Rails流程:
 - 在∆∆∆s目錄建立一個about.html.erb檔案
  -View盡量不要放太多複雜邏輯(會導致切版混亂)丟給controller做
 
-(練習)更改首頁:
-
--routes.rb添加
-
--*root "wlecome#index"
-
--$rails g controller welcome
-
--*welcome controller裡增加action(def index)
-
--*View/welcome/index.html.erb
-
--$rails s
+0.(練習)更改首頁
+  -routes.rb添加
+  -＊root "wlecome#index"
+  -＄rails g controller welcome
+  -＊welcome controller裡增加action(def index)
+  -＊View/welcome/index.html.erb
+  -＄rails s
 
