@@ -24,35 +24,34 @@ Things you may want to cover:
 * ...
 # InkMelody
 
-note:
-2023-11-16 Rails-first
-Rails流程:
-
+#note:
+##2023-11-16 Rails-first
+###Rails流程:
 
 1.Route(路徑)  //如果沒有回傳404
-- get "about", to: "∆∆∆s#about"
+```get "about", to: "∆∆∆s#about"```
 
 2.Controller(控制器)
-- 命名慣例(複數)
-- rails g controller ∆∆∆s
-  - 生成 ∆∆∆s_controller.rb
+- **命名慣例(複數)**
+- ```rails g controller ∆∆∆s```
+  - ```生成 ∆∆∆s_controller.rb```
   - 在View生成pages目錄
 - 尋找(∆∆∆s_controller.rb)action
 
-2-1 controller裡的action會對應View/pages目錄裡同名.erb檔
+2-1 **controller裡的action會對應View/pages目錄裡同名.erb檔**
   - 如果有View沒有action也會自己尋找
   -*erb = embedded ruby <%= %>(顯示畫面), <% %>(不顯示畫面)
-    - erb註解方式 <%#= (1..42).to_a.sample(5) %>
+    - erb註解方式 ```<%#= (1..42).to_a.sample(5) %>```
 
 3.View(畫面)
 - 在∆∆∆s目錄建立一個about.html.erb檔案
- -View盡量不要放太多複雜邏輯(會導致切版混亂)丟給controller做
+ -View盡量不要放太多複雜邏輯(會導致切版混亂)丟給**controller**做
 
 0.(練習)更改首頁
-  -routes.rb添加
-  -＊root "wlecome#index"
-  -＄rails g controller welcome
-  -＊welcome controller裡增加action(def index)
-  -＊View/welcome/index.html.erb
-  -＄rails s
+  - **routes.rb**添加
+  - ```root "wlecome#index"```
+  - ```＄rails g controller welcome```
+  - **welcome_controller**裡增加**action**(def index)
+  - **View/welcome/index.html.erb
+  - ```＄rails s```
 
