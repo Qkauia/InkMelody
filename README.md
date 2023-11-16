@@ -24,8 +24,10 @@ Things you may want to cover:
 * ...
 # InkMelody
 
-#note:
+#note
+
 ##2023-11-16 Rails-first
+
 ###Rails流程:
 
 1.Route(路徑)  //如果沒有回傳404
@@ -52,6 +54,6 @@ Things you may want to cover:
   - ```root "wlecome#index"```
   - ```＄rails g controller welcome```
   - **welcome_controller**裡增加**action**(def index)
-  - **View/welcome/index.html.erb
+  - **View/welcome/index.html.erb**
   - ```＄rails s```
 
