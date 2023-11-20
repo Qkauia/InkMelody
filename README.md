@@ -40,28 +40,30 @@
 ### routes:
 
 ```get "about", to: "pages#about", as: :about```
-**get "about_XXXXXX""**(as綁定get可以自由更改)**as: :about->>綁定**
+**get "about_XXXXXX""**
+(as綁定get可以自由更改)**as: :about->>綁定**
 **如果沒加`as`路徑會隨著`get`走**
-  - 修改只要在routes.rb
+  - 修改只要在`routes.rb`
   - 閱讀程式碼比較方便
   - 有問題馬上會顯示錯誤
 
-**/(resources) 列表頁**
- - /products 列表頁
- - /products_new 新增
- - /products_123 檢視
- - /products_123/edit 編輯
+**(resources) 列表頁**
+ - `/products`列表頁
+ - `/products_new` 新增
+ - `/products_123` 檢視
+ - `/products_123/edit` 編輯
 
 ### view:
 
 ```<%= link_to "about123", about_path %>```
-`link_to` 第一個參數`顯示文字` 第二個參數`連結位置(也可以使用"/about")`
+`link_to` 
+第一個參數`顯示文字` 第二個參數`連結位置(也可以使用"/about")`
 
 #### 為什麼要用框架寫：
-  - 一致性、有規律
+  * 一致性、有規律
 
 ### `RESTful API`
-HTTP Verb 動詞:
+**HTTP Verb 動詞**:
   - 資源操作：
     - `GET` resource 讀取(最常見讀取手法) 接收資料會顯示在網址頁(送的資料有上限(網址長度))
       收尋引擎也是透過`get`
@@ -74,8 +76,8 @@ HTTP Verb 動詞:
 `http://127.0.0.1:3000/products/new?title=123&description=456&price=789`
 **`title=123&description=456&price=789`**
 
-/resource/new -> /resource/create
-<form action="送到頁面" method="資料操作方法">
+`/resource/new -> /resource/create`
+```<form action="送到頁面" method="資料操作方法">```
   - `action`預設是當下頁面
   - `method`沒有寫預設值是`get`
 
@@ -87,7 +89,8 @@ HTTP Verb 動詞:
 
 #### 加強版HASH
 
-  ```{
+  ```
+  {
   "authenticity_token"=>"-oOrHVI1oieK13", 
   "title"=>"123232", 
   "description"=>"2312312", 
@@ -96,20 +99,23 @@ HTTP Verb 動詞:
   "action"=>"create"
   }
   ```
-
-`params[:price]`
-`params["price"]`
+**Ruby`HASH`取得方式:
+ - `params[:price]`
+ - `params["price"]`
 
 
 #### model 流程:
+
+```
 (櫃檯)->人話
 action->model->(SQL)->DB(資料庫)
         model<--------DB(DataBase)
         (取資料)->(翻譯)
-        
+```
+
 #### 建立model:
 **第一步構思資料型別**
-Product(建議開頭大寫)
+**P**roduct(**開頭大寫**)
   - title:string
   - description:text
   - price:decimal
@@ -117,18 +123,17 @@ Product(建議開頭大寫)
 
 **透過指令建立model:**
 1. `$ rails g model Product title description:text price:decimal`
-  - 表格(table)名字是∆∆∆s(小寫複數)
-  - model名字是開頭大寫(單數)
+  - 表格(table)名字是∆∆∆s(**小寫複數**)
+  - `model`名字是開頭大寫(**單數**)
   - `t.timestamps`縮寫
-    - t.datetime :create_at
-    - t.datetime :updated_at
-  - 另外有一個隱藏欄位(流水編號)
+    1. t.datetime :create_at
+    2. t.datetime :updated_at
+  - 另外有一個隱藏欄位(流水編號)**id**
 2. `$rails db:migrate` **資料結構匯入**
-3. 
 
 
 * `migration`=> `DB成長記錄`
-* 一個資料庫(DataBase)可以有很多表格(table)
+* 一個資料庫(DataBase)可以有**很多表格**(table)
 
 
 #### 資料庫資料語法
