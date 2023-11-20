@@ -2,7 +2,7 @@
 
 # InkMelody
 
-# note
+# 上課筆記
 =============================================================
 ## 2023-11-16 Rails-first
 
@@ -102,7 +102,7 @@
   ```
 **Ruby`HASH`取得方式:**
  - `params[:price]`
- - `params["price"]`
+ - `params["price"]` 方便其他程式語言寫入
 
 #### model 流程:
 ```
@@ -149,5 +149,9 @@ action->model->(SQL)->DB(資料庫)
   - `Product.all` **列出所有資料(包含內容)**
 
 可以透過`HTML`的```name="product[title]"```將`params`另外打包
+**範例：**
+```
+<input type="number" min="0" name="product[price]" id="price">
+```
 
 =============================================================
