@@ -1,0 +1,22 @@
+<h1>新增商品</h1>
+
+<form action="/products" method="post" data-turbo="false">
+
+<input type="text" name="authenticity_token" 
+      value="<%= form_authenticity_token %>">
+
+<div>
+  <label for="title">Title</label>
+  <input type="text" id="title" name="product[title]" class="border-black border-2">
+</div>
+<div>
+  <label for="description">Description</label>
+  <textarea name="product[description]" id="description" class="border-black border-2"></textarea>
+</div>
+<div>
+  <label for="price">Price</label>
+  <input type="number" min="0" name="product[price]" id="price" class="border-black border-2">
+</div>
+
+<button>新增</button>
+</form>
