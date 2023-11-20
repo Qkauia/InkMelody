@@ -3,7 +3,7 @@
 # InkMelody
 
 # note
-
+=============================================================
 ## 2023-11-16 Rails-first
 
 ### Rails流程:
@@ -35,6 +35,7 @@
   - **View/welcome/index.html.erb**
   - ```＄rails s```
 
+=============================================================
 ## 2023/11/20
 
 ### routes:
@@ -99,13 +100,11 @@
   "action"=>"create"
   }
   ```
-**Ruby`HASH`取得方式:
+**Ruby`HASH`取得方式:**
  - `params[:price]`
  - `params["price"]`
 
-
 #### model 流程:
-
 ```
 (櫃檯)->人話
 action->model->(SQL)->DB(資料庫)
@@ -131,23 +130,24 @@ action->model->(SQL)->DB(資料庫)
   - 另外有一個隱藏欄位(流水編號)**id**
 2. `$rails db:migrate` **資料結構匯入**
 
-
 * `migration`=> `DB成長記錄`
 * 一個資料庫(DataBase)可以有**很多表格**(table)
 
+#### 資料庫資料語法:
+**可以透過`$ rails c --sandbox`對資料庫測試
+(`--sandbox`**control d後**資料庫會還原)
+  - `$rails c --sandbox`
+  - `p1 = Product.new`
+  - `p1.title = "Rails"`
+  - `p1.price = 1000`
+  - `p1.save`
 
-#### 資料庫資料語法
-`$rails c --sandbox`
-`p1 = Product.new`
-`p1.title = "Rails"`
-`p1.price = 1000`
-`p1.save`
+  - `content = { title: "Hello", description: "uuuuu", price: 1000}`
+  - `p1 = Product.new(content)`
 
-`content = { title: "Hello", description: "uuuuu", price: 1000}`
-`p1 = Product.new(content)`
-
-`Product.count`**資料庫幾筆資料**
-`Product.all` **列出所有資料(包含內容)**
-
+  - `Product.count`**資料庫幾筆資料**
+  - `Product.all` **列出所有資料(包含內容)**
 
 可以透過`HTML`的```name="product[title]"```將`params`另外打包
+
+=============================================================
