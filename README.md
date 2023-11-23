@@ -203,6 +203,11 @@ action->model->(SQL)->DB(資料庫)
 
 ### 建立成功訊息
 
+- flash[:notice] = "新增商品成功"
+- flash[:alert] = "新增商品成功"
+  可以直接加在redirect_to後方當參數使用
+  redirect_to root_path, notice: "新增商品成功"
+
 ### prefix
 
 ```module 三重
@@ -224,6 +229,31 @@ link_to '首頁', root_path , class: 'color-red , method: 'post'
 
 `model: @product`會推測路徑,方法並帶token
 
-Rails 兩大原則
-DRY = Don't Repeat Yourself
-CoC = Convention over Configuration 遵照慣例優於設定
+### Rails 兩大原則
+
+- DRY = Don't Repeat Yourself
+- CoC = Convention over Configuration 遵照慣例優於設定
+
+所有erb檔都在/Users/qkauia/Desktop/InkMelody/app/views/layouts/application.html.erb
+
+### 路徑依照程式碼由上而下閱讀：
+
+- 注意有id路徑記得放下面，要不然其他網址可能會被當id使用
+
+### 找資料：
+
+- find(num流水編號) 找不到回傳錯誤訊息
+
+- [v]find_by(多元) 找不到回傳nil 1個
+  - 找到第一筆就結束了
+- [v]find_by!(多元) 找不到回傳錯誤訊息 1個
+
+- where(id: ID) 找不到回傳空陣列 找到一堆(陣列) 取值.first
+
+#### ruby替換文字語法
+
+`gsub("\n", '<br />').html_safe`
+
+### 如果要資料要反向排序，請交給controller做
+
+- 使用`order(id: :desc)
