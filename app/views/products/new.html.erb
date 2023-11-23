@@ -1,22 +1,24 @@
 <h1>新增商品</h1>
 
-<form action="/products" method="post" data-turbo="false">
+<%= form_with model: @product,
+              data: { turbo: false } do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title , class: 'border-black border-2' %>
+  </div>
 
-<input type="text" name="authenticity_token" 
-      value="<%= form_authenticity_token %>">
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description ,class: 'border-black border-2'%>
+  </div>
 
-<div>
-  <label for="title">Title</label>
-  <input type="text" id="title" name="product[title]" class="border-black border-2">
-</div>
-<div>
-  <label for="description">Description</label>
-  <textarea name="product[description]" id="description" class="border-black border-2"></textarea>
-</div>
-<div>
-  <label for="price">Price</label>
-  <input type="number" min="0" name="product[price]" id="price" class="border-black border-2">
-</div>
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price ,class: 'border-black border-2', min: 0 %>
+  </div>
 
-<button>新增</button>
-</form>
+  <div>
+    <%= form.submit "新增商品", class: 'bg-rose-700 text-white px-3 py-2' %>
+  </div>
+
+<% end %>

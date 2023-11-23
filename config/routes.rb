@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get "about_us", to: "pages#about"
   get "about", to: "pages#about", as: :about
   get "privacy", to: "pages#privacy"
-  get "/products/new", to: "products#new"
+  get "/products/new", to: "products#new", as: :new_product
   post "products", to: "products#create"
 
   root "welcome#index"
