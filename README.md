@@ -257,3 +257,28 @@ link_to '首頁', root_path , class: 'color-red , method: 'post'
 ### 如果要資料要反向排序，請交給controller做
 
 - 使用`order(id: :desc)
+
+=============================================================
+
+## 2023/11/24
+
+-GET R
+-POST C
+-Patch U
+-put U
+-delete D
+
+HTML表單目前只支援`get`/`post`
+所以rails小幫手(`form_with`)會對`HTML`做一個隱藏欄位`name="_method" value="patch"`
+透過js監聽更改預設行為
+
+rel="nofollow"->是給爬蟲看的
+
+link_to 預設method是get, 必須加
+
+JS檔預設行為e.preventDefault
+
+<%= button_to "刪除商品", product_path(@product) , method: 'delete'%>
+
+confirm->回有回傳值
+alert->沒有

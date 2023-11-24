@@ -1,13 +1,29 @@
 class ProductsController < ApplicationController
+  before_action :find_product, only: [ :show, :edit , :update, :destroy ]
+  # before_action :find_product, except: [ :index, :new, :create ]  #盡量用only
 
   def index
-    @products = Product.all.order(id: :desc)
+    @products = Product.order(id: :desc)
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
+  def edit
+  end
+
+  def destroy
+    @product.destroy 
+    redirect_to root_path, alert: '商品已經刪除'
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path(@product), notice: '更新成功'
+    else
+      render :edit
+    end
+  end
 
   def new
     @product = Product.new
@@ -23,11 +39,16 @@ class ProductsController < ApplicationController
     end
   end
 
-  
-
+  #這個controller專用method
+  private#預設public
   # Strong Parameter
   def product_params
     params.require(:product).permit(:title, :description, :price)
   end
+
+  def find_product
+    @product = Product.find(params[:id])
+  end
   
+
 end
