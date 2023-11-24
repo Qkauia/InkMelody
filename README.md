@@ -299,5 +299,57 @@ def find_product
 ```
 
 - `render file: Rails.public_path.join('404.html')`抓取頁面
+
 - `status: 404`
+- `status: not_found`
+
 - `layout: false`不要再生成一個html
+
+拯救`ActiveRecord::RecordNotFound`針對錯誤訊息
+`rescue_from ActiveRecord::RecordNotFound, with: :not_found`
+`rescue_from 拯救對象, with: :解決method`
+
+- 把方法另外制定一個method
+
+產生：
+`$rails g migration add_onsale_to_product`
+
+刪除：
+`$rails d migration ∆∆∆∆`
+
+倒退：
+`$rails db:rollback`
+
+執行：
+`$rails db:migrate`
+
+檢查：
+`db/schema.rb`**看是否有生成欄位**
+
+- step:x(退x步)
+
+**增加資料庫欄位MVC都要做修改**
+
+rails g migration add_deleted_at_to_product
+
+add_column
+
+**建立索引**(增加空間，減少讀取時間)
+add_index :products, deleted_at
+add_index table_name, column_name
+
+- 優點：查詢讀取效率增加
+- 缺點：空間需要量變大，寫入時間增加
+
+paranoid
+
+### CRUD練習：
+
+1. 開全新rails專案
+2. 對Book 做 CRUD
+3. 不需要美化(CSS)
+4. route 考用 resources
+
+條件： 20 mins 錄影，講解
+
+- 上傳到 Youtube 開[非公開連結]

@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy 
+    # @product.update(deleted_at: Time.current)
     redirect_to root_path, alert: '商品已經刪除'
   end
 
@@ -43,7 +44,7 @@ class ProductsController < ApplicationController
   private#預設public
   # Strong Parameter
   def product_params
-    params.require(:product).permit(:title, :description, :price)
+    params.require(:product).permit(:title, :description, :price, :onsale)
   end
 
   def find_product
