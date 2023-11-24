@@ -282,3 +282,22 @@ JS檔預設行為e.preventDefault
 
 confirm->回有回傳值
 alert->沒有
+
+### 錯誤預防處理
+
+**JavaScript**->`try...catch`
+**Ruby**->`begin...rescue`
+
+```
+def find_product
+    begin
+      @product = Product.find(params[:id])
+    rescue
+      render file: Rails.public_path.join('404.html'), status: 404, layout: false
+    end
+  end
+```
+
+- `render file: Rails.public_path.join('404.html')`抓取頁面
+- `status: 404`
+- `layout: false`不要再生成一個html

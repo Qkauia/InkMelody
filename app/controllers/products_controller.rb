@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [ :show, :edit , :update, :destroy ]
   # before_action :find_product, except: [ :index, :new, :create ]  #盡量用only
-
+  
   def index
     @products = Product.order(id: :desc)
   end
@@ -47,8 +47,7 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find(params[:id])
+      @product = Product.find(params[:id])
   end
   
-
 end
