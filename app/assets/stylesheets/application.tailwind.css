@@ -4,15 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 新式群組寫法 */
 .field_with_errors {
   display: inline;
 
   & input[type="text"] {
-    border: 3px solid red;
+    border: 2px solid red;
   }
+
   & input[type="number"] {
-    border: 3px solid red;
+    border: 2px solid red;
   }
 }
 
@@ -23,8 +23,9 @@
 .flash-notice {
   @apply px-4 py-2 text-white bg-slate-700;
 }
+
 .ink-btn {
-  @apply bg-slate-700 px-3 text-white rounded py-2 inline-block;
+  @apply px-3 bg-slate-700  text-white rounded py-2 inline-block;
 }
 
 .ink-btn-danger {
