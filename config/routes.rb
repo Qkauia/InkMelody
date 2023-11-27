@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   
   
   resources :products
-  
+  resource :users, except: [ :destroy ]
+
   root "products#index"
   get "privacy", to: "pages#privacy"
   get "about", to: "pages#about", as: :about

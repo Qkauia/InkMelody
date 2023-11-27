@@ -353,3 +353,84 @@ paranoid
 條件： 20 mins 錄影，講解
 
 - 上傳到 Youtube 開[非公開連結]
+
+=============================================================
+
+## 2023/11/27
+
+### 建立 User Model
+
+- User
+- email, unique:true
+- password
+
+### routes.rb
+
+- resource :users
+
+- new_uesrs GET /uesrs/new(.:format) uesrs#new
+- edit_uesrs GET /uesrs/edit(.:format) uesrs#edit
+-      uesrs GET   /uesrs(.:format)      uesrs#show
+-            PATCH /uesrs(.:format)      uesrs#update
+-            PUT   /uesrs(.:format)      uesrs#update
+-            POST  /uesrs(.:format)      uesrs#create
+
+### controller
+
+`$ rails g controller users`
+
+### 密碼確認欄位：
+
+- password_confirmation
+  `new.html.erb`
+
+```
+<div>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'input-field' %>
+</div>
+
+<div>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: 'input-field' %>
+</div>
+```
+
+- 記得`controller`清洗也要加進去：
+
+```
+def user_params
+  params.require(:user).permit(:email, :password, :password_confirmation)
+end
+```
+
+### 密碼處理
+
+- MD5(已經破解，不要用)
+  `Digest::MD5.hexdigest(123)`
+- **SHA1**
+  `Digest::SHA256.hexdigest(123)`
+
+- model建立
+  - 使用`before_create`
+
+```
+before_create :encrypt_password
+
+private
+
+def encrypt_password
+  self.password = Digest::SHA256.hexdigest(`#{self.password}`)
+end
+```
+
+- 加強密碼破解難度(後台幫使用者加多的字，讓密碼轉SHA1碼更複雜)
+
+```
+def encrypt_password
+  salted_password = "xx#{self.password}yy"
+  self.password = Digest::SHA256.hexdigest(salted_password)
+end
+```
+
+### 更新密碼(不能再)
