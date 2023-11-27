@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <div>user-id: <%= current_user.email %></div>
     <%= render "shared/navbar"%>
     <%= render "shared/flash" if flash.any? %>
     <%= yield %>

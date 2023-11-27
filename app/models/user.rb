@@ -4,6 +4,13 @@ class User < ApplicationRecord
 
   before_create :encrypt_password
   # after_save :method
+  
+  def self.login(data)
+    email = data[:email]
+    password = Digest::SHA256.hexdigest("xx#{data[:password]}yy")
+    # find_by(email: email, password: password)
+    find_by(email:, password: )#上面簡短寫法(冒號要留著)
+  end
 
   private
 

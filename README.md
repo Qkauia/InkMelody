@@ -425,6 +425,7 @@ end
 ```
 
 - 加強密碼破解難度(後台幫使用者加多的字，讓密碼轉SHA1碼更複雜)
+  - 這行為稱為雜湊Hashed(並非加密)
 
 ```
 def encrypt_password
@@ -433,4 +434,67 @@ def encrypt_password
 end
 ```
 
-### 更新密碼(不能再)
+### session(代表號碼牌)
+
+- sessions
+  - `resource :sessions, only: [ :create , :destroy ]`
+
+#### git 小知識：WIP = work in progress
+
+### routes.rb resource客製化
+
+- `member`**(帶id)**
+- `collection`**(不帶id)**
+
+- `form_for(@user)`可以接`model`
+- form_tag(url: '∆∆∆∆')預設路徑是自己
+- form_with是for跟tag合體會去解析(@∆∆∆.calss)，然後推算路徑
+
+**用form_with可以帶scope: 'user'把資料打包(可以不需要model)**
+
+- M Model 最常重複使用
+- V View 經常
+- C Controller 單讀使用
+
+### singleton method單例方法
+
+單體方法轉實體方法：
+
+```
+Class Cat
+end
+
+def kk.eat
+  puts 'hello'
+end
+
+kk = Cat.new
+kk.eat
+```
+
+單體方法轉類別方法：
+
+```
+Class Cat
+  def self.eat
+    puts
+  end
+end
+
+kk = Cat.new
+kk.eat
+```
+
+- Cat.eat類別方法
+- kk.eat 實體方法
+
+### cookie和session：
+
+-兩者必須互相對應
+
+- cookie 在遊覽器裡面(可以設定有效期限)
+- session 在Sever裡面
+  **所謂登入：就是拿到session，然後遊覽器會根據網域給cookie對應**
+  **裝置遺失，如果要遠端將裝置移除這行為就是遠端清掉裝置session**
+
+#### 如果`View`要印資料庫東西，可以透過`helper`自己建立小幫手(不限位置只要是helper.rb檔)

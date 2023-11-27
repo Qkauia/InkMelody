@@ -11,7 +11,12 @@ class UsersController < ApplicationController
     else
       render :new
     end
-    
+  end
+
+  def sign_in
+  end
+
+  def login
   end
 
 

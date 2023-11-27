@@ -7,10 +7,14 @@ Rails.application.routes.draw do
   # patch '/products/:id', to: "products#update"
   # delete '/products/:id', to: "products#destroy"
   # post "products", to: "products#create"
-  
-  
   resources :products
-  resource :users, except: [ :destroy ]
+  resource :users, except: [ :destroy ] do
+    collection do
+      get :sign_in
+    end
+    # == get '/users/sign_in', to: 'users#sign_in'
+  end
+  resource :sessions, only: [ :create , :destroy ]
 
   root "products#index"
   get "privacy", to: "pages#privacy"
