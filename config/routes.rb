@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # patch '/products/:id', to: "products#update"
   # delete '/products/:id', to: "products#destroy"
   # post "products", to: "products#create"
-  resources :products
+  resources :products do
+    resources :comments, shallow: true ,only: [ :create , :destroy ]
+  end
+
+
   resource :users, except: [ :destroy ] do
     collection do
       get :sign_in

@@ -498,3 +498,88 @@ kk.eat
   **裝置遺失，如果要遠端將裝置移除這行為就是遠端清掉裝置session**
 
 #### 如果`View`要印資料庫東西，可以透過`helper`自己建立小幫手(不限位置只要是helper.rb檔)
+
+=============================================================
+
+## 2023/11/28
+
+### data:{ turbo_method: 'delete' }
+
+- rails 會攔截頁面的超連結->然後透過JavaScript
+
+### session清除購物車，也會一起被清掉
+
+#### 如果沒抓到值預設值給它
+
+1. fetch(:name, 123) 主要看key存在不在
+
+2. h[:name] || 123 是看值(如果剛好是false就會抓不到)
+
+#### dig(:a, :b)
+
+```
+h = { a: { b: 2} }
+
+h.dig(:a, :b) => 2
+h.dig(:a, :c) => nil
+```
+
+### model 多方連結
+
+1:1 一對一
+1:N 一對多
+N:N 多對多
+
+比如商品要跟使用者連結N:1
+
+- 商品就要追加user_id(慣例)
+  rails g migrate add_user_id_to_product
+
+#### method!=>要去看手冊
+
+#### 類別可以套上module模組或使用繼承:
+
+```
+module Flyable
+  def fly
+  end
+end
+
+class Cat
+  include Flyable
+end
+
+kk.Cat.new
+kk.fly
+```
+
+**所以當我們寫在controller顯示找不到method，View小幫手會抓不到，可以加入`include ∆∆∆Helps`**
+
+**或把View小幫手裡method移到controller,然後加入`helper_method: :∆∆, :∆∆`**
+
+controller 跟 view 都要用 會放在controller比較好用(老師建議)
+
+`define_method "#something" do ∆∆∆∆ end`
+
+#### 多對多關係
+
+- 兩方的id必須關聯到第三方表格
+
+Comment
+
+- user_id
+- product_id
+- content:text
+- deleted_at:datetime:index
+
+POST /products/2/comment, to: "comment#create"
+砍留言針對留言：
+DELETE /comment/3, to: "comment#destroy"
+
+QueryString ?a=2&b=3
+
+301
+302 轉址
+
+nested routes
+shallow routes

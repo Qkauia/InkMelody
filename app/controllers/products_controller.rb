@@ -1,12 +1,16 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [ :show, :edit , :update, :destroy ]
-  # before_action :find_product, except: [ :index, :new, :create ]  #盡量用only
+  before_action :find_product, only: [ :show ]
+  before_action :authenticate_user!, except: [ :index , :show ]
+  before_action :find_owned_product,only: [ :edit , :update, :destroy ]
+  
   
   def index
     @products = Product.order(id: :desc)
   end
 
   def show
+    @comment = Comment.new
+    @comments = @product.comments
   end
 
   def edit
@@ -31,7 +35,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    # @product = Product.new(product_params)
+    # @product.user = current_user
+    @product = current_user.products.new(product_params)
     if @product.save
       redirect_to root_path, notice: "新增商品成功"
     else
@@ -44,11 +50,14 @@ class ProductsController < ApplicationController
   private#預設public
   # Strong Parameter
   def product_params
-    params.require(:product).permit(:title, :description, :price, :onsale)
+    params.require(:product).permit(:title, :description, :price, :onsale, :user_id )
   end
 
   def find_product
       @product = Product.find(params[:id])
   end
   
+  def find_owned_product
+    @product = current_user.products.find(params[:id])
+  end
 end

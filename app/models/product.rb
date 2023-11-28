@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   # validates_presence_of : title
   validates :price, numericality: { greater_than: 0 }
 
+  belongs_to :user
+  has_many :comments, -> {order(id: :desc)}
   #scope
   # scope :ok , ->{where(deleted_at: nil)} 
   default_scope { where(deleted_at: nil)}
