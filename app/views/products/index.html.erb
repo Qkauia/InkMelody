@@ -3,6 +3,7 @@
 
 <ul>
   <% @products.each do |product|%>
+  『<%= product.user.email.split('@').first %>』
   <li>
     <%= link_to product.title, product_path(product) %>
   </li>

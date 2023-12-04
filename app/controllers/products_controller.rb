@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   
   
   def index
-    @products = Product.order(id: :desc)
+    @products = Product.includes(:user).order(id: :desc)
   end
 
   def show

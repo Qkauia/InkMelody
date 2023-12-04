@@ -572,14 +572,35 @@ Comment
 - content:text
 - deleted_at:datetime:index
 
-POST /products/2/comment, to: "comment#create"
-砍留言針對留言：
-DELETE /comment/3, to: "comment#destroy"
+`POST /products/2/comment, to: "comment#create"`
 
-QueryString ?a=2&b=3
+#### 砍留言針對留言：
 
-301
-302 轉址
+`DELETE /comment/3, to: "comment#destroy"`
 
-nested routes
-shallow routes
+`QueryString ?a=2&b=3`
+
+- 301
+- 302 轉址
+
+- nested routes
+- shallow routes
+
+=============================================================
+
+## 2023/12/03
+
+- 測試腳本:
+
+  - rails db:seed
+
+- README:
+  `bundle install`& `yarn install`
+  `rails db:setup`
+
+`turboLinks`
+
+- N + 1
+  迴圈裡查詢資料要跑很多次
+
+打api
