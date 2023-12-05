@@ -3,6 +3,9 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   has_many :products
+  # M by M
+  has_many :like_products
+  has_many :liked_products, through: :like_products, source: :product
   
   
   before_create :encrypt_password
@@ -17,6 +20,12 @@ class User < ApplicationRecord
   
   def own?(p)
     product_ids.include?(p.id)
+  end
+
+
+  def liked?(p)
+    liked_product_ids.include?(p.id)
+
   end
 
   private

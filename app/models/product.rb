@@ -6,6 +6,9 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_many :comments, -> {order(id: :desc)}
+  # M by M
+  has_many :liked_products
+  has_many :liked_users, through: :liked_products, source: :user
   #scope
   # scope :ok , ->{where(deleted_at: nil)} 
   default_scope { where(deleted_at: nil)}

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [ :show, :like]
+  before_action :find_product, only: [ :show]
   before_action :authenticate_user!, except: [ :index , :show ]
   before_action :find_owned_product,only: [ :edit , :update, :destroy ]
   
@@ -46,9 +46,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def like
-    render json: { id: params[:id], status: 'liked'}
-  end
+  
 
   #這個controller專用method
   private#預設public
