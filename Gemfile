@@ -70,3 +70,4 @@ group :test do
 end
 
 gem 'faker'
+gem "image_processing", "~> 1.12"

@@ -4,8 +4,15 @@ class Product < ApplicationRecord
   # validates_presence_of : title
   validates :price, numericality: { greater_than: 0 }
 
+
   belongs_to :user
   has_many :comments, -> {order(id: :desc)}
+  has_one_attached :cover
+
+  has_one_attached :cover do |f|
+    f.variant :cover, resize_to_limit: [1000, 1000]
+    f.variant :thumb, resize_to_limit: [400, 400]
+  end
   # M by M
   has_many :liked_products
   has_many :liked_users, through: :liked_products, source: :user

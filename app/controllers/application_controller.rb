@@ -7,7 +7,17 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     if not user_signed_in?
-      redirect_to sign_in_users_path,alert: '請登入會員'
+      respond_to do |format|
+        format.html{
+          redirect_to sign_in_users_path,alert: '請登入會員'
+        }
+        format.json{
+          render json: {
+            message: '請先登入會員',
+            url: sign_in_users_path
+          }, status: 401
+        }
+      end
     end
   end
 

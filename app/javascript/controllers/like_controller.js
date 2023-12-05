@@ -22,7 +22,7 @@ export default class extends Controller {
     e.preventDefault();
 
     const { id } = this.element.dataset;
-    const url = `/api/v1/products/${id}/like`;
+    const url = `/api/v1/products/${id}/like.json`;
 
     const response = await patch(url);
     if (response.ok) {
@@ -32,6 +32,9 @@ export default class extends Controller {
       } else {
         this.btnTarget.textContent = LIKE_LABEL;
       }
+    } else {
+      const { url } = await response.json;
+      window.location.href = url;
     }
     // const token = document.querySelector("meta[name='csrf-token']").content;
 

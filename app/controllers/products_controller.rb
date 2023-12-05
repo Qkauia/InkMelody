@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   private#預設public
   # Strong Parameter
   def product_params
-    params.require(:product).permit(:title, :description, :price, :onsale, :user_id )
+    params.require(:product).permit(:title, :description, :price, :onsale, :user_id, :cover )
   end
 
   def find_product
