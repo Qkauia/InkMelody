@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
-
+  resource :cart, only: [ :show , :create , :update, :destroy ]
+  
   resource :users, except: [ :destroy ] do
     collection do
       get :sign_in
