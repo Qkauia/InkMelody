@@ -71,3 +71,5 @@ end
 
 gem 'faker'
 gem "image_processing", "~> 1.12"
+
+gem "braintree", "~> 4.16.0"

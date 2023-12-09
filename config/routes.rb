@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
   resource :sessions, only: [ :create , :destroy ]
+  resources :orders, only: [ :create ]
+  
 
   root "products#index"
   get "privacy", to: "pages#privacy"

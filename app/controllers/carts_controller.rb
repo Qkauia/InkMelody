@@ -7,6 +7,8 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
+
+    @token = gateway.client_token.generate
   end
 
   def create
@@ -27,5 +29,14 @@ class CartsController < ApplicationController
   
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def gateway
+    Braintree::Gateway.new(
+      :environment => :sandbox,
+      :merchant_id => 'y8skw4cz47rt3zmr',
+      :public_key => 'xvxmpszrn2yc3ny4',
+      :private_key => 'b58d5abf2ddf61ae41a03070a5f72636',
+    )
   end
 end
