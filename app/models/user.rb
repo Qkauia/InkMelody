@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   has_one :cart
-
+  has_many :orders
   has_many :products
   # M by M
   has_many :like_products
