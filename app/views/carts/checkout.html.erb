@@ -26,6 +26,7 @@
 
 <section class="mt-4">
   <%= form_with model: @order, class: 'flex flex-col gap-2' do |form| %>
+  
     <div>
       <%= form.label :recipient, '收件人', class: 'label' %>
       <%= form.text_field :recipient, class: 'input w-full input-bordered' %>
@@ -40,5 +41,10 @@
     </div>
 
     <div data-controller="braintree" data-token="<%= @token %>"></div>
+
+    <div>
+      <%= form.submit '送出', class: 'btn btn-neutral' %>
+    </div>
+
   <% end %>
 </section>

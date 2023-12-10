@@ -16,8 +16,8 @@ class Order < ApplicationRecord
     year = now.year
     month = "%02d" % now.month
     day = "%02d" % now.day
-    code = SecureRandom.alphanumeric.upcase(0..n - 1)
-    
+    code = SecureRandom.alphanumeric.upcase[0..n - 1]
+
     "IM#{year}#{month}#{day}#{code}"
   end
 end
