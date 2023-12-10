@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
         current_cart.destroy
 
-        order.update(state: 'paid')
+        order.pay!
 
         redirect_to root_path, notice: '付款成功'
       else
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:recipient, :address, :tel).merge(state: 'pending')
+    params.require(:order).permit(:recipient, :address, :tel)
   end
 
   def process_errors

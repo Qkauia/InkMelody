@@ -76,3 +76,5 @@ gem "image_processing", "~> 1.12"
 
 gem "braintree", "~> 4.16.0"
 
+
+gem "aasm", "~> 5.5"
