@@ -50,6 +50,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  
+  gem "dotenv", "~> 2.8"
 end
 
 group :development do
@@ -73,3 +75,4 @@ gem 'faker'
 gem "image_processing", "~> 1.12"
 
 gem "braintree", "~> 4.16.0"
+
