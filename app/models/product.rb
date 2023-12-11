@@ -20,7 +20,16 @@ class Product < ApplicationRecord
   #scope
   # scope :ok , ->{where(deleted_at: nil)} 
   default_scope { where(deleted_at: nil)}
+  default_scope { where(onsale: true) }
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["description", "onsale", "price", "title"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+  
   def destroy
     update(deleted_at: Time.current)
   end
