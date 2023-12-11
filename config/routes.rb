@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   
 
   resources :products do
+    collection do
+      get :my
+    end
     resources :comments, shallow: true ,only: [ :create , :destroy ]
   end
 
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
       resources :products, only: [] do
         member do
           patch :like
+          patch :sort
         end
       end
     end

@@ -35,3 +35,7 @@
 .input-field {
   @apply border-2 border-black;
 }
+
+.drag-ghost {
+  @apply border-4 border-dashed border-slate-400;
+}
