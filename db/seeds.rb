@@ -17,6 +17,8 @@ puts '資料建立中...'
     )
     puts "建立商品 #{product.title}"
   end
+
+  
 end
 
 puts '資料建立完成'

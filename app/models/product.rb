@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  acts_as_list scope: :user
   validates :title, presence: true 
   # ruby語法省略小括號跟大括號 validates(:title, {presence: true})
   # validates_presence_of : title

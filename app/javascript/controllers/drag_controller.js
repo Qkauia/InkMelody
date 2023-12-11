@@ -1,8 +1,8 @@
 /** @format */
 
 import { Controller } from "@hotwired/stimulus";
-import Sortable from "sortablejs";
 import { patch } from "@rails/request.js";
+import Sortable from "sortablejs";
 
 // Connects to data-controller="drag"
 export default class extends Controller {
@@ -13,8 +13,7 @@ export default class extends Controller {
         const { id } = e.item.dataset;
         const { newIndex } = e;
         const url = `/api/v1/products/${id}/sort`;
-        const data = { newIndex };
-        await Path(url, { body: JSON.stringify(data) });
+        await patch(url, { body: JSON.stringify({ newIndex }) });
       },
     });
   }
