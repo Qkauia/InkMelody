@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   root "products#index"
   get "privacy", to: "pages#privacy"
   get "about", to: "pages#about", as: :about
+  get "/search", to: "products#search"
   
   
 end

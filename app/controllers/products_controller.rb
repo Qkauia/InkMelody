@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [ :show]
   before_action :authenticate_user!, except: [ :index , :show ]
-  before_action :find_owned_product,only: [ :edit , :update, :destroy ]
+  before_action :find_owned_product,only: [ :edit , :update, :destroy]
   
   
   def index
@@ -20,6 +20,10 @@ class ProductsController < ApplicationController
   def edit
   end
 
+
+  def search
+    @products = Product.where("title LIKE ? OR description LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
+  end
   def destroy
     @product.destroy 
     # @product.update(deleted_at: Time.current)
