@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   
   
   def index
-    @products = Product.includes(:user).order(id: :desc)
+    @products = Product.includes(:user).order(id: :desc).page(params[:page]).per(8)
   end
 
   def show
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def my
-    @products = current_user.products
+    @products = current_user.products.page(params[:page]).per(8)
   end
 
   def edit
